@@ -3,7 +3,8 @@ import {
   CHANGE_PASSWORD_PASSWORD_CHANGED,
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD_FAIL,
-  CHANGE_PASSWORD
+  CHANGE_PASSWORD,
+  CHANGE_PASSWORD_CLEANUP
 } from './passwordTypes';
 
 import {
@@ -14,6 +15,10 @@ import {
 } from '../../utils/utils';
 
 import params from '../../auth0-params.json';
+
+export const cleanup = () => {
+  return { type: CHANGE_PASSWORD_CLEANUP };
+}
 
 export const passwordChanged = (text) => {
   return {type: CHANGE_PASSWORD_PASSWORD_CHANGED, payload: text};

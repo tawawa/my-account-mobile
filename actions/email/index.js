@@ -3,7 +3,8 @@ import {
   CHANGE_EMAIL_EMAIL_CHANGED,
   CHANGE_EMAIL_SUCCESS,
   CHANGE_EMAIL_FAIL,
-  CHANGE_EMAIL
+  CHANGE_EMAIL,
+  CHANGE_EMAIL_CLEANUP
 } from './emailTypes';
 
 import {
@@ -14,6 +15,10 @@ import {
 } from '../../utils/utils';
 
 import params from '../../auth0-params.json';
+
+export const cleanup = () => {
+  return { type: CHANGE_EMAIL_CLEANUP };
+}
 
 export const emailChanged = (text) => {
   return {type: CHANGE_EMAIL_EMAIL_CHANGED, payload: text};

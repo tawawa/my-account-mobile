@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { emailChanged, forgotPassword } from '../../actions/forgot';
+import { emailChanged, forgotPassword, cleanup } from '../../actions/forgot';
 import { Card, CardSection, Input, Button, Spinner, ImageView } from '../common';
 import params from '../../auth0-params.json';
 
 class ForgotPassword extends Component {
+
+  componentWillMount() {
+    this.props.cleanup();
+  }
 
   onEmailChange(text) {
     this.props.emailChanged(text);
@@ -83,5 +87,5 @@ const mapStateToProps = ({ forgot }) => {
 };
 
 export default connect(mapStateToProps, {
-  emailChanged, forgotPassword
+  emailChanged, forgotPassword, cleanup
 })(ForgotPassword);

@@ -2,7 +2,8 @@ import {
   CHANGE_PASSWORD_PASSWORD_CHANGED,
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD_FAIL,
-  CHANGE_PASSWORD
+  CHANGE_PASSWORD,
+  CHANGE_PASSWORD_CLEANUP
 } from '../actions/password/passwordTypes';
 
 const INITIAL_STATE = {
@@ -18,6 +19,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, password: action.payload };
     case CHANGE_PASSWORD:
       return { ...state, loading: true, error: '', message: '' };
+    case CHANGE_PASSWORD_CLEANUP:
+      return { ...state, ...INITIAL_STATE };
     case CHANGE_PASSWORD_SUCCESS:
       return { ...state, ...INITIAL_STATE, message: 'Password successfully updated.' };
     case CHANGE_PASSWORD_FAIL:

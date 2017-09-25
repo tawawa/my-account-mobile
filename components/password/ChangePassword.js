@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { passwordChanged, changePassword } from '../../actions/password';
+import { passwordChanged, changePassword, cleanup } from '../../actions/password';
 import { Card, CardSection, Input, Button, Spinner, ImageView } from '../common';
 import params from '../../auth0-params.json';
 
 class ChangePassword extends Component {
+
+  componentWillMount() {
+    this.props.cleanup();
+  }
 
   onPasswordChange(text) {
     this.props.passwordChanged(text);
@@ -85,5 +89,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  passwordChanged, changePassword
+  passwordChanged, changePassword, cleanup
 })(ChangePassword);

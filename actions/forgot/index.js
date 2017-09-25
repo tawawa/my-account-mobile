@@ -4,13 +4,18 @@ import {
   FORGOT_PASSWORD_EMAIL_CHANGED,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
+  FORGOT_PASSWORD_CLEANUP
 } from './forgotTypes';
 import params from '../../auth0-params.json';
 
 export const emailChanged = (text) => {
   return {type: FORGOT_PASSWORD_EMAIL_CHANGED, payload: text};
 };
+
+export const cleanup = () => {
+  return { type: FORGOT_PASSWORD_CLEANUP };
+}
 
 export const forgotPassword = ({ email }) => {
 

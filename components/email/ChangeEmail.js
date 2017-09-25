@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { emailChanged, changeEmail } from '../../actions/email';
+import { emailChanged, changeEmail, cleanup } from '../../actions/email';
 import { Card, CardSection, Input, Button, Spinner, ImageView } from '../common';
 import params from '../../auth0-params.json';
 
 class ChangeEmail extends Component {
+
+  componentWillMount() {
+    this.props.cleanup();
+  }
 
   onEmailChange(text) {
     this.props.emailChanged(text);
@@ -84,5 +88,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  emailChanged, changeEmail
+  emailChanged, changeEmail, cleanup
 })(ChangeEmail);
